@@ -94,7 +94,7 @@ def on_motion_detected():
     play_random_sound()
     open_eyes()
     while pygame.mixer.music.get_busy():
-        pygame.event.wait()
+        pygame.time.Clock().tick(10)
         print("waiting till end")
     close_eyes()
     print("finished!")
