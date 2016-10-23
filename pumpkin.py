@@ -2,6 +2,9 @@ __author__ = 'andrzej'
 __author__ = 'andrzej'
 
 import max7219.led as led
+import pygame
+
+pygame.mixer.init()
 
 test = [
     "10000000",
@@ -15,7 +18,7 @@ test = [
 ]
 
 device = led.matrix(cascaded=1)
-device.pixel(0, 0, 1)
+device.pixel(0, 0, 2)
 
 def draw_matrix(matrix):
     for row, line_str in enumerate(matrix):
