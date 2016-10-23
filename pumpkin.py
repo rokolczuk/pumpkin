@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 from motion_detector import MotionDetector
 
 GPIO.setmode(GPIO.BCM)
-pin_led = 21
+pin_led = 12
 GPIO.setup(pin_led, GPIO.OUT)
 
 
