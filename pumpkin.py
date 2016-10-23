@@ -8,6 +8,8 @@ import RPi.GPIO as GPIO
 from motion_detector import MotionDetector
 
 GPIO.setmode(GPIO.BCM)
+pin_led = 26
+GPIO.setup(pin_led, GPIO.OUT)
 
 
 motion_detector = MotionDetector()
@@ -91,12 +93,13 @@ def close_eyes():
 
 def on_motion_detected():
     print("motion detected!")
+    GPIO.output(pin_led, 1)
     play_random_sound()
     open_eyes()
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
-        print("waiting till end")
     close_eyes()
+    GPIO.output(pin_led, 0)
     print("finished!")
 
 draw_matrix(eyes_closed)
