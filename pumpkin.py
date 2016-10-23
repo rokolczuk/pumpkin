@@ -13,7 +13,7 @@ GPIO.setmode(GPIO.BCM)
 motion_detector = MotionDetector()
 
 pygame.mixer.init()
-pygame.mixer.music.set_volume(1)
+pygame.mixer.music.set_volume(.2)
 
 eyes_open = [
     "0000000000000000",
