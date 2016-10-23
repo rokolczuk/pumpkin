@@ -5,6 +5,7 @@ import max7219.led as led
 import pygame
 
 pygame.mixer.init()
+pygame.mixer.pre_init(44100, -16, 1, 2048)
 pygame.mixer.music.set_volume(1)
 
 test = [
