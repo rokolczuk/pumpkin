@@ -8,14 +8,14 @@ import RPi.GPIO as GPIO
 from motion_detector import MotionDetector
 
 GPIO.setmode(GPIO.BCM)
-pin_led = 26
+pin_led = 21
 GPIO.setup(pin_led, GPIO.OUT)
 
 
 motion_detector = MotionDetector()
 
 pygame.mixer.init()
-pygame.mixer.music.set_volume(.2)
+pygame.mixer.music.set_volume(.04)
 
 eyes_open = [
     "0000000000000000",
