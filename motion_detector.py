@@ -1,7 +1,4 @@
 import RPi.GPIO as GPIO
-from config.PinConfig import PinConfig
-
-
 
 class MotionDetector:
 
