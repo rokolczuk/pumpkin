@@ -15,7 +15,7 @@ GPIO.setup(pin_led, GPIO.OUT)
 motion_detector = MotionDetector()
 
 pygame.mixer.init()
-pygame.mixer.music.set_volume(.04)
+pygame.mixer.music.set_volume(.4)
 
 eyes_open = [
     "0000000000000000",
