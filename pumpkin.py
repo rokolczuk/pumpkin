@@ -10,15 +10,14 @@ test = [
     "1000000011111111",
     "1100000011111111",
     "1110000011111111",
-    "1111000011111111",
+    "1111000011100111",
     "1111100011111111",
     "1111110011111111",
     "1111111011111111",
     "1111111111111111"
 ]
 
-device = led.matrix(cascaded=1)
-device.pixel(0, 0, 2)
+device = led.matrix(cascaded=2)
 
 def draw_matrix(matrix):
     for row, line_str in enumerate(matrix):
