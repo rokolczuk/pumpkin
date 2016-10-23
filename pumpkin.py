@@ -1,13 +1,13 @@
 __author__ = 'andrzej'
-__author__ = 'andrzej'
 
 import max7219.led as led
 import pygame
+from time import sleep
 
-pygame.init()
 pygame.mixer.init()
-pygame.mixer.pre_init(44100, -16, 1, 2048)
 pygame.mixer.music.set_volume(1)
+
+
 
 test = [
     "1000000011111111",
@@ -37,3 +37,6 @@ def play_audio(path):
 
 draw_matrix(test)
 play_audio("laugh.mp3")
+
+while True:
+	sleep(1)
