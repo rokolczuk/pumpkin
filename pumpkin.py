@@ -4,8 +4,10 @@ import max7219.led as led
 import pygame
 from time import sleep
 import os, random
+import RPi.GPIO as GPIO
 from motion_detector import MotionDetector
 
+GPIO.setmode(GPIO.BOARD)
 
 
 motion_detector = MotionDetector()
