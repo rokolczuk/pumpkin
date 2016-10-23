@@ -3,6 +3,13 @@ __author__ = 'andrzej'
 import max7219.led as led
 import pygame
 from time import sleep
+import os, random
+from motion_detector import MotionDetector
+
+
+
+motion_detector = MotionDetector()
+motion_detector.subcribe_to_detection(on_motion_detected)
 
 pygame.mixer.init()
 pygame.mixer.music.set_volume(1)
@@ -45,6 +52,9 @@ eyes_closed = [
 
 device = led.matrix(cascaded=2)
 
+def get_random_sound():
+    random.choice(os.listdir("./sounds"))
+
 def draw_matrix(matrix):
     for row, line_str in enumerate(matrix):
         for col, char in enumerate(line_str):
@@ -53,29 +63,42 @@ def draw_matrix(matrix):
     device.flush()
 
 def play_audio(path):
+    print("playing: " + path)
     pygame.mixer.music.stop()
     pygame.mixer.music.load(path)
     pygame.mixer.music.play()
+
+def play_random_sound():
+    play_audio(get_random_sound())
 
 def open_eyes():
 
     print("open eyes")
     draw_matrix(eyes_closed)
-    sleep(0.3)
+    sleep(0.15)
     draw_matrix(eyes_opening)
-    sleep(0.3)
+    sleep(0.15)
     draw_matrix(eyes_open)
 
 def close_eyes():
     print("close eyes")
     draw_matrix(eyes_open)
-    sleep(0.3)
+    sleep(0.15)
     draw_matrix(eyes_opening)
-    sleep(0.3)
+    sleep(0.15)
     draw_matrix(eyes_closed)
 
-while True:
+playing = False
+
+def on_motion_detected():
+    print("motion detected!")
+    play_random_sound()
     open_eyes()
-    sleep(5)
+    while pygame.mixer.music.get_busy():
+        pygame.event.wait()
+        print("waiting till end")
     close_eyes()
-    sleep(5)
+    print("finished!")
+
+while True:
+    sleep(0.1)
