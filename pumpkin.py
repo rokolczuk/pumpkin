@@ -54,7 +54,7 @@ eyes_closed = [
 device = led.matrix(cascaded=2)
 
 def get_random_sound():
-    return random.choice(os.listdir("./sounds"))
+    return "sounds/" + random.choice(os.listdir("./sounds"))
 
 def draw_matrix(matrix):
     for row, line_str in enumerate(matrix):
@@ -99,6 +99,7 @@ def on_motion_detected():
     close_eyes()
     print("finished!")
 
+draw_matrix(eyes_closed)
 motion_detector.subcribe_to_detection(on_motion_detected)
 
 while True:
