@@ -22,9 +22,15 @@ device = led.matrix(cascaded=2)
 def draw_matrix(matrix):
     for row, line_str in enumerate(matrix):
         for col, char in enumerate(line_str):
-            #print(str(row) + "x" + str(col) + ": " + char)
             device.pixel(col, row, int(char), redraw=False)
 
     device.flush()
 
+def play_audio(path):
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load(path)
+    pygame.mixer.music.play()
+
+
 draw_matrix(test)
+play_audio("laugh.mp3")
