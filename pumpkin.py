@@ -7,11 +7,10 @@ import os, random
 import RPi.GPIO as GPIO
 from motion_detector import MotionDetector
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 
 motion_detector = MotionDetector()
-motion_detector.subcribe_to_detection(on_motion_detected)
 
 pygame.mixer.init()
 pygame.mixer.music.set_volume(1)
@@ -55,7 +54,7 @@ eyes_closed = [
 device = led.matrix(cascaded=2)
 
 def get_random_sound():
-    random.choice(os.listdir("./sounds"))
+    return random.choice(os.listdir("./sounds"))
 
 def draw_matrix(matrix):
     for row, line_str in enumerate(matrix):
@@ -90,8 +89,6 @@ def close_eyes():
     sleep(0.15)
     draw_matrix(eyes_closed)
 
-playing = False
-
 def on_motion_detected():
     print("motion detected!")
     play_random_sound()
@@ -101,6 +98,8 @@ def on_motion_detected():
         print("waiting till end")
     close_eyes()
     print("finished!")
+
+motion_detector.subcribe_to_detection(on_motion_detected)
 
 while True:
     sleep(0.1)
